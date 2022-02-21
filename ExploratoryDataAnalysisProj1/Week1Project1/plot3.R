@@ -1,0 +1,13 @@
+setwd("C:/Users/HP/Desktop/R/R Programming/Week1")
+data<-read.csv("household_power_consumption.txt",header = TRUE,sep=";",na.strings="?",comment.char = "")
+data1<-subset(data,Date %in% c("1/2/2007","2/2/2007"))
+data1$Date<-as.Date(data1$Date,format="%d/%m/%Y")
+dateAndtime<-paste(as.Date(data1$Date),data1$Time)
+data1$DateTime<-as.POSIXct(dateAndtime)
+with(data1,{
+    plot(Sub_metering_1~DateTime, type="l",ylab="Global Active Power (kilowatts)", xlab="")
+    lines(Sub_metering_2~DateTime,col="red")
+    lines(Sub_metering_3~DateTime,col="blue")
+})
+legend("topright",legend =c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),col=c("black","red","blue"),lty=1)
+png("plot3.png",width=480,height=480)
