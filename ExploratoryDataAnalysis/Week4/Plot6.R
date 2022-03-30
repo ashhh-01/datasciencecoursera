@@ -9,11 +9,10 @@ emissions_by_year <- NEI %>%filter(fips %in% c("24510", "06037") & type == "ON-R
 emissions_by_year$year <- as.factor(emissions_by_year$year)
 emissions_by_year$county_name <- factor(emissions_by_year$fips, levels=c("06037", "24510"), labels=c("Los Angeles County", "Baltimore City")) 
 
-ggplot(emissions_by_year, aes(x=year, y=total_emissions)) + geom_bar(stat="identity", aes(fill=county_name), position = "dodge") +
+ggplot(emissions_by_year, aes(x=year, y=total_emissions)) + geom_bar(stat="identity", aes(fill=county_name), position = "dodge") +guides(fill=guide_legend(title=NULL)) +
     labs(x="Year", y="PM2.5 Emissions (tons)") +
-    ggtitle("Vehicle PM2.5 Emissions - Baltimore City and LA County")
-
-
+    ggtitle("Vehicle PM2.5 Emissions - Baltimore City and LA County") +
+    theme(legend.position="bottom")
 
 png("Plot6.png")
 dev.off()
