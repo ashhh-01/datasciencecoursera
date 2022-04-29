@@ -98,5 +98,5 @@ This code book summarizes the resulting data fields in `tidy.txt`.
 5 `STANDING` (value `5`): subject was standing during the test
 6 `LAYING` (value `6`): subject was laying down during the test
 s
-## Please see the README.md for how the following instructions are implemented [README.md]()
+## Please see the README.md for how the following instructions are implemented [README.md](https://github.com/ashhh-01/datasciencecoursera/blob/main/Getting%20and%20cleaning%20data/Week4%20Project/README.md)
 
