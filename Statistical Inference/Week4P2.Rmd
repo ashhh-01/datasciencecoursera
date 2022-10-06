@@ -1,0 +1,55 @@
+---
+title: "Week4P2"
+author: "Ash"
+date: "2022-10-03"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Q1
+
+```{r}
+library(ggplot2)
+library(datasets)
+colnames(ToothGrowth)
+
+
+ToothGrowth$dose <- as.factor(ToothGrowth$dose)
+summary(ToothGrowth)
+
+qplot(dose ,len ,data = ToothGrowth, 
+      col = supp, 
+      main = "Tooth growth of guinea pigs by supplement type and dosage (mg)", 
+      xlab = "Dosage (mg)", 
+      ylab = "Tooth length")
+```
+
+
+# Q3
+
+```{r}
+VC.length <- ToothGrowth$len[ToothGrowth$supp == "VC"]
+OJ.length <- ToothGrowth$len[ToothGrowth$supp == "OJ"]
+
+
+
+t.test(OJ.length, VC.length, 
+       alternative = "greater", # testing hypothesis if OJ is *greater* than VC
+       paired = FALSE, # the data point are not paired with each other
+       var.equal = FALSE, # the variances are not equal
+       conf.level = 0.95) # a 95% confidence itnerval is taken as the default if nothing else is defined
+
+```
+
+# Q4
+
+
+- There is (at least) a 95% confidence that by increasing the dosage from 0.5 to 1mg and from 1 to 2mg, increases the tooth length.
+- There is (at least) a 95% confidence that giving the supplement OJ (Orange Juice) increases tooth length more significantly than giving VC (Vitamin C) Assumptions made are that this sample is representative of the population in question, the assignment for categories was random and that the distribution of the means is normal.
+
+
+

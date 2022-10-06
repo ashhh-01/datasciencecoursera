@@ -1,0 +1,63 @@
+---
+title: "Week4 Assignment"
+author: "Ash"
+date: "2022-10-03"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+## Part1
+
+### Q!
+```{r}
+lambda <- 0.2
+sim_Data <- matrix(rexp(1000*40, lambda), nrow = 1000, ncol = 40)
+distMean <- apply(sim_Data, 1, mean)
+hist(distMean, breaks = 50, 
+     main = "Distribution of 1000 averages of 40 random exponentials", 
+     xlab = "Value of means", 
+     ylab = "Frequency of means", 
+     col = "grey")
+abline(v = 1/lambda, lty = 1, lwd = 5, col = "blue")
+legend("topright", lty = 1, lwd = 5, col = "grey", legend = "theoretical mean")
+
+```
+
+### Q2
+
+```{r}
+
+distVar <- apply(sim_Data, 1, var)
+hist(distVar, breaks = 50, main = "The distribution of variances in a sample of 40 random exponentials", xlab = "Value of variances", ylab = "Frequency of variance", col = "light blue")
+abline(v = (1/lambda)^2, lty = 1, lwd = 5, col = "blue")
+legend("topright", lty = 1, lwd = 5, col = "blue", legend = "theoretical variance")
+
+```
+
+
+### Q3
+
+```{r}
+par(mfrow = c(3, 1))
+hist(sim_Data, breaks = 50, main = "Distribution of exponentials with lambda equals to 0.2", xlab = "Exponentials", col = "yellow")
+hist(distMean, breaks = 50, main = "The distribution of 1000 averages of 40 random exponentials", xlab = "Value of means", ylab = "Frequency of means", col = "pink")
+simNorm <- rnorm(1000, mean = mean(distMean), sd = sd(distMean))
+hist(simNorm, breaks = 50, main = "A normal distribution with theoretical mean and sd of the exponentials", xlab = "Normal variables", col = "light green")
+
+```
+
+
+
+
+
+
+
+
+
+
+
