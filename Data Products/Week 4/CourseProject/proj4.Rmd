@@ -1,0 +1,68 @@
+---
+title: "Proj4"
+author: "Ash"
+date: "2022-11-01"
+output: html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+## Project Goal
+
+This peer assessed assignment has two parts.
+
+ First, you will create a Shiny application and deploy it on Rstudio's servers.
+ 
+ Second, you will use Slidify or Rstudio Presenter to prepare a reproducible pitch presentation about your application.
+
+## Steps to Perform
+
+1. Write a shiny application with associated supporting documentation. The documentation should be thought of as whatever a user will need to get started using your application.
+2. Deploy the application on Rstudio's shiny server
+3. Share the application link by pasting it into the provided text box
+4. Share your server.R and ui.R code on github
+
+## How to use the application
+
+It is a simple application where you can choose the temperature you want to see and you can also see the average wind speed and average pressure. They are measurements in the State of Karnataka, India in the month of January of the year 2022.
+
+The application is running 
+
+The data used, ui.R and Server.R code are in my [github repository]().
+
+
+## Monthly Average Temperature
+
+```{r}
+library(readxl)
+Libro_1 <- read_excel("Libro 1.xlsx",
+                      col_types = c("numeric", "numeric", "numeric", 
+                                    "numeric", "numeric", "numeric"))
+```
+
+```{r, cache=TRUE, fig.align='center'}
+library(plotly)
+fig <- plot_ly(Libro_1, type = "scatter", mode = "lines") %>%
+    add_trace(x = ~Dia, y = ~Monthly_Average_Temperature, name = "(Day, Temperature)") %>%
+    layout(showlegend = F)
+    options(warn = -1)
+    
+fig <- fig %>%
+    layout(
+        
+        xaxis = list(zerolinecolor = '#ffff',
+                     
+                     zerolinewidth = 2,
+                     
+                     gridcolor = 'ffff'),
+        
+        yaxis = list(zerolinecolor = '#ffff',
+                     
+                     zerolinewidth = 2,
+                     
+                     gridcolor = 'ffff'),
+        
+        plot_bgcolor='#e5ecf6', width = 900)
+fig
+```

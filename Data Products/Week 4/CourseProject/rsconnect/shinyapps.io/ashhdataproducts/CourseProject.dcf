@@ -1,0 +1,13 @@
+name: CourseProject
+title: CourseProject
+username:
+account: ashhdataproducts
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7486536
+bundleId: 6463730
+url: https://ashhdataproducts.shinyapps.io/CourseProject/
+when: 1667317414.43002
+lastSyncTime: 1667317414.43004
+asMultiple: FALSE
+asStatic: FALSE
