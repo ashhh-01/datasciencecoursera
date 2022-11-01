@@ -29,7 +29,7 @@ It is a simple application where you can choose the temperature you want to see 
 
 The application is running 
 
-The data used, ui.R and Server.R code are in my [github repository]().
+The data used, ui.R and Server.R code are in my [github repository](https://github.com/ashhh-01/datasciencecoursera/tree/main/Data%20Products/Week%204/CourseProject).
 
 
 ## Monthly Average Temperature
